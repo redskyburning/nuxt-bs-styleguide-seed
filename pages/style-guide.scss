@@ -1,0 +1,20 @@
+@import "../assets/styles/includes.scss";
+
+.style-guide {
+  &__button-row {
+    > * {
+      margin:0 .8rem .8rem 0;
+    }
+  }
+
+  &__section {
+    &__title {
+      margin:$spacer 0 $spacer * 2;
+      border-bottom:1px solid $black;
+    }
+
+    &__subtitle {
+      margin:$spacer 0 $spacer * 1.2;
+    }
+  }
+}

@@ -740,6 +740,153 @@
           </b-navbar>
         </b-collapse>
       </section>
+
+      <section class="style-guide__section style-guide__section--pagination">
+        <h2 class="style-guide__section__title display-4"
+            v-b-toggle.pagination-body>Pagination</h2>
+        <b-collapse id="pagination-body"
+                    class="style-guide__section__body">
+          <b-pagination size="md" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
+
+          <h3 class="style-guide__section__subtitle">Large Pagination</h3>
+
+          <b-pagination size="lg" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
+
+          <h3 class="style-guide__section__subtitle">Small Pagination</h3>
+
+          <b-pagination size="sm" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
+
+        </b-collapse>
+      </section>
+
+      <section class="style-guide__section style-guide__section--popovers">
+        <h2 class="style-guide__section__title display-4"
+            v-b-toggle.popovers-body>Popovers</h2>
+        <b-collapse id="popovers-body"
+                    class="style-guide__section__body">
+          <div class="style-guide__button-row">
+            <span v-for="placement in placements" :key="placement">
+              <b-btn :id="'exPopover1-'+placement"
+                     class="mb-3"
+                     variant="primary">
+                {{ placement }}
+              </b-btn>
+              <b-popover :target="'exPopover1-'+placement"
+                         :placement="placement"
+                         title="Popover!"
+                         triggers="hover focus"
+                         :content="`Placement ${placement}`">
+              </b-popover>
+            </span>
+          </div>
+        </b-collapse>
+      </section>
+
+      <section class="style-guide__section style-guide__section--tables">
+        <h2 class="style-guide__section__title display-4"
+            v-b-toggle.tables-body>Tables</h2>
+        <b-collapse id="tables-body"
+                    class="style-guide__section__body">
+          <b-table responsive :items="tableData.items" :fields="tableData.fields"></b-table>
+
+          <h3 class="style-guide__section__subtitle">Striped/Hover Table</h3>
+
+          <b-table striped responsive :items="tableData.items" :fields="tableData.fields"></b-table>
+
+          <h3 class="style-guide__section__subtitle">MOAR OPTIONS!</h3>
+
+            <div class="my-4">
+              <b-form-checkbox v-model="striped">Striped</b-form-checkbox>
+              <b-form-checkbox v-model="bordered">Bordered</b-form-checkbox>
+              <b-form-checkbox v-model="outlined">Outlined</b-form-checkbox>
+              <b-form-checkbox v-model="small">Small</b-form-checkbox>
+              <b-form-checkbox v-model="hover">Hover</b-form-checkbox>
+              <b-form-checkbox v-model="dark">Dark</b-form-checkbox>
+              <b-form-checkbox v-model="fixed">Fixed</b-form-checkbox>
+              <b-form-checkbox v-model="footClone">Foot Clone</b-form-checkbox>
+            </div>
+
+            <b-table :striped="striped"
+                     :bordered="bordered"
+                     :outlined="outlined"
+                     :small="small"
+                     :hover="hover"
+                     :dark="dark"
+                     :fixed="fixed"
+                     :foot-clone="footClone"
+                     :items="tableData.items"
+                     :fields="tableData.fields"
+                     responsive>
+            </b-table>
+
+        </b-collapse>
+      </section>
+
+      <section class="style-guide__section style-guide__section--tabs">
+        <h2 class="style-guide__section__title display-4"
+            v-b-toggle.tabs-body>Tabs</h2>
+        <b-collapse id="tabs-body"
+                    class="style-guide__section__body">
+          <b-tabs>
+            <b-tab title="first" active>
+              <br>I'm the first fading tab
+            </b-tab>
+            <b-tab title="second" >
+              <br>I'm the second tab content
+            </b-tab>
+            <b-tab title="disabled" disabled>
+              <br>Disabled tab!
+            </b-tab>
+          </b-tabs>
+
+          <h3 class="style-guide__section__subtitle">Tab Cards</h3>
+
+          <b-card no-body>
+            <b-tabs card>
+              <b-tab title="Tab 1" active>
+                Tab Contents 1
+              </b-tab>
+              <b-tab title="Tab 2">
+                Tab Contents 2
+              </b-tab>
+            </b-tabs>
+          </b-card>
+
+          <h3 class="style-guide__section__subtitle">Pill Style</h3>
+
+          <b-card no-body>
+            <b-tabs pills card>
+              <b-tab title="Tab 1" active>
+                Tab Contents 1
+              </b-tab>
+              <b-tab title="Tab 2">
+                Tab Contents 2
+              </b-tab>
+            </b-tabs>
+          </b-card>
+
+        </b-collapse>
+      </section>
+
+      <section class="style-guide__section style-guide__section--tooltips">
+        <h2 class="style-guide__section__title display-4"
+            v-b-toggle.tooltips-body>Tooltips</h2>
+        <b-collapse id="tooltips-body"
+                    class="style-guide__section__body">
+          <div class="style-guide__button-row">
+            <b-btn v-for="placement in placements"
+                   :key="placement"
+                   :id="`tooltip-${placement}`"
+                   variant="primary">{{ placement }}</b-btn>
+            <b-tooltip v-for="placement in placements"
+                       :key="placement"
+                       :target="`tooltip-${placement}`"
+                       :placement="placement">
+              Hello <strong>World!</strong>
+            </b-tooltip>
+          </div>
+        </b-collapse>
+      </section>
     </div>
   </div>
 </template>

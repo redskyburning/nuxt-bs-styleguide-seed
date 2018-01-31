@@ -41,5 +41,6 @@ module.exports = {
   css: [
     '@/assets/styles/includes/_pre-bootstrap.scss',
     'bootstrap/scss/bootstrap.scss'
-  ]
+  ],
+  plugins: ['~plugins/filters.js']
 };

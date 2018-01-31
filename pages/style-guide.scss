@@ -1,6 +1,18 @@
 @import "../assets/styles/includes.scss";
 
 .style-guide {
+  padding-bottom:$spacer * 10;
+
+  &__section {
+    & + & {
+      margin-top:$spacer * 2.5;
+    }
+
+    &__title {
+      cursor:pointer;
+    }
+  }
+
   &__button-row {
     > * {
       margin:0 .8rem .8rem 0;
@@ -10,11 +22,12 @@
   &__section {
     &__title {
       margin:$spacer 0 $spacer * 2;
-      border-bottom:1px solid $black;
+      padding-bottom:$spacer * .3;
+      border-bottom:5px solid $black;
     }
 
     &__subtitle {
-      margin:$spacer 0 $spacer * 1.2;
+      margin:($spacer * 1.5) 0 ($spacer * 1.2);
     }
   }
 }

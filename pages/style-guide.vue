@@ -5,12 +5,16 @@
   <div class="page style-guide">
     <header class="style-guide__header">
       <h1 class="display-1">Style Guide</h1>
+      <div class="style-guide__button-row">
+        <b-button variant="primary" @click="toggleAll(true)">Open All Sections</b-button>
+        <b-button variant="primary" @click="toggleAll(false)">Close All Sections</b-button>
+      </div>
     </header>
     <div class="style-guide__body">
 
       <section class="style-guide__section style-guide__section--alerts">
-        <h2 class="style-guide__section__title display-4" v-b-toggle.alert-body>Alerts</h2>
-        <b-collapse id="alert-body"
+        <h2 class="style-guide__section__title display-4" @click="toggleSection('alerts')">Alerts</h2>
+        <b-collapse :visible="showSection.alerts" id="alert-body"
                     class="style-guide__section__body">
           <b-alert show>Default Alert</b-alert>
 
@@ -67,8 +71,9 @@
 
       <section class="style-guide__section style-guide__section--buttons">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.buttons-body>Buttons</h2>
-        <b-collapse id="buttons-body"
+            @click="toggleSection('buttons')">Buttons</h2>
+        <b-collapse :visible="showSection.buttons"
+                    id="buttons-body"
                     class="style-guide__section__body">
           <div class="style-guide__button-row">
             <button type="button"
@@ -154,16 +159,16 @@
 
       <section class="style-guide__section style-guide__section--breadcrumbs">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.breadcrumb-body>Breadcrumbs</h2>
-        <b-collapse id="breadcrumb-body" class="style-guide__section__body">
+            @click="toggleSection('breadcrumbs')">Breadcrumbs</h2>
+        <b-collapse :visible="showSection.breadcrumbs" id="breadcrumb-body" class="style-guide__section__body">
           <b-breadcrumb :items="breadcrumbItems"/>
         </b-collapse>
       </section>
 
       <section class="style-guide__section style-guide__section--cards">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.cards-body>Cards</h2>
-        <b-collapse id="cards-body"
+            @click="toggleSection('cards')">Cards</h2>
+        <b-collapse :visible="showSection.cards" id="cards-body"
                     class="style-guide__section__body">
           <b-card-group deck>
             <b-card title="Image Top"
@@ -426,8 +431,8 @@
 
       <section class="style-guide__section style-guide__section--carousels">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.carousels-body>Carousels</h2>
-        <b-collapse id="carousels-body"
+            @click="toggleSection('carousels')">Carousels</h2>
+        <b-collapse :visible="showSection.carousels" id="carousels-body"
                     class="style-guide__section__body">
           <b-carousel id="carousel1"
                       style="text-shadow: 1px 1px 2px #333;"
@@ -479,8 +484,8 @@
 
       <section class="style-guide__section style-guide__section--dropdowns">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.dropdowns-body>Dropdowns</h2>
-        <b-collapse id="dropdowns-body"
+            @click="toggleSection('dropdowns')">Dropdowns</h2>
+        <b-collapse :visible="showSection.dropdowns" id="dropdowns-body"
                     class="style-guide__section__body">
           <div class="style-guide__button-row">
             <b-dropdown id="ddown1"
@@ -537,8 +542,8 @@
 
       <section class="style-guide__section style-guide__section--embeds">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.embeds-body>Embeds</h2>
-        <b-collapse id="embeds-body"
+            @click="toggleSection('embeds')">Embeds</h2>
+        <b-collapse :visible="showSection.embeds" id="embeds-body"
                     class="style-guide__section__body">
           <b-embed type="iframe"
                    aspect="16by9"
@@ -550,8 +555,8 @@
 
       <section class="style-guide__section style-guide__section--forms">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.forms-body>Forms</h2>
-        <b-collapse id="forms-body"
+            @click="toggleSection('forms')">Forms</h2>
+        <b-collapse :visible="showSection.forms" id="forms-body"
                     class="style-guide__section__body">
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group id="exampleInputGroup1"
@@ -598,8 +603,8 @@
 
       <section class="style-guide__section style-guide__section--jumbotron">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.Jumbotron-body>Jumbotron</h2>
-        <b-collapse id="Jumbotron-body"
+            @click="toggleSection('jumbotron')">Jumbotron</h2>
+        <b-collapse :visible="showSection.jumbotron" id="Jumbotron-body"
                     class="style-guide__section__body">
           <div class="jumbotron">
             <h1 class="display-4">Hello, world!</h1>
@@ -615,8 +620,8 @@
 
       <section class="style-guide__section style-guide__section--list-groups">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.list-group-body>List Groups</h2>
-        <b-collapse id="list-group-body"
+            @click="toggleSection('listGroups')">List Groups</h2>
+        <b-collapse :visible="showSection.listGroups" id="list-group-body"
                     class="style-guide__section__body">
           <b-list-group>
             <b-list-group-item>Cras justo odio</b-list-group-item>
@@ -638,8 +643,8 @@
 
       <section class="style-guide__section style-guide__section--media">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.media-body>Media Objects</h2>
-        <b-collapse id="media-body"
+            @click="toggleSection('media')">Media Objects</h2>
+        <b-collapse :visible="showSection.media" id="media-body"
                     class="style-guide__section__body">
           <b-card>
             <b-media>
@@ -670,8 +675,8 @@
 
       <section class="style-guide__section style-guide__section--modals">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.modal-body>Modals</h2>
-        <b-collapse id="modal-body"
+            @click="toggleSection('modals')">Modals</h2>
+        <b-collapse :visible="showSection.modals" id="modal-body"
                     class="style-guide__section__body">
           <div class="style-guide__button-row">
             <b-btn v-b-modal.modal-default>Default Modal</b-btn>
@@ -707,8 +712,8 @@
 
       <section class="style-guide__section style-guide__section--navs">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.navs-body>Navs</h2>
-        <b-collapse id="navs-body"
+            @click="toggleSection('navs')">Navs</h2>
+        <b-collapse :visible="showSection.navs" id="navs-body"
                     class="style-guide__section__body">
           <b-nav>
             <b-nav-item active>Active</b-nav-item>
@@ -782,8 +787,8 @@
 
       <section class="style-guide__section style-guide__section--pagination">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.pagination-body>Pagination</h2>
-        <b-collapse id="pagination-body"
+            @click="toggleSection('pagination')">Pagination</h2>
+        <b-collapse :visible="showSection.pagination" id="pagination-body"
                     class="style-guide__section__body">
           <b-pagination size="md" :total-rows="100" v-model="currentPage" :per-page="10"></b-pagination>
 
@@ -800,8 +805,8 @@
 
       <section class="style-guide__section style-guide__section--popovers">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.popovers-body>Popovers</h2>
-        <b-collapse id="popovers-body"
+            @click="toggleSection('popovers')">Popovers</h2>
+        <b-collapse :visible="showSection.popovers" id="popovers-body"
                     class="style-guide__section__body">
           <div class="style-guide__button-row">
             <span v-for="(placement, placementIndex) in placements"
@@ -824,8 +829,8 @@
 
       <section class="style-guide__section style-guide__section--tables">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.tables-body>Tables</h2>
-        <b-collapse id="tables-body"
+            @click="toggleSection('tables')">Tables</h2>
+        <b-collapse :visible="showSection.tables" id="tables-body"
                     class="style-guide__section__body">
           <b-table responsive :items="tableData.items" :fields="tableData.fields"></b-table>
 
@@ -864,8 +869,8 @@
 
       <section class="style-guide__section style-guide__section--tabs">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.tabs-body>Tabs</h2>
-        <b-collapse id="tabs-body"
+            @click="toggleSection('tabs')">Tabs</h2>
+        <b-collapse :visible="showSection.tabs" id="tabs-body"
                     class="style-guide__section__body">
           <b-tabs>
             <b-tab title="first" active>
@@ -910,8 +915,8 @@
 
       <section class="style-guide__section style-guide__section--tooltips">
         <h2 class="style-guide__section__title display-4"
-            v-b-toggle.tooltips-body>Tooltips</h2>
-        <b-collapse id="tooltips-body"
+            @click="toggleSection('tooltips')">Tooltips</h2>
+        <b-collapse :visible="showSection.tooltips" id="tooltips-body"
                     class="style-guide__section__body">
           <div class="style-guide__button-row">
             <b-btn v-for="(placement, placementIndex) in placements"

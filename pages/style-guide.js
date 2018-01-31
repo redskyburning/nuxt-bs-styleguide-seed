@@ -87,7 +87,28 @@ export default {
         'Carrots', 'Beans', 'Tomatoes', 'Corn'
       ],
       show: true,
-      currentPage: 1
+      currentPage: 1,
+      showAll: false,
+      showSection: {
+        alerts : false,
+        buttons : false,
+        breadcrumbs : false,
+        cards : false,
+        carousels: false,
+        dropdowns: false,
+        embeds: false,
+        forms: false,
+        jumbotron: false,
+        listGroups: false,
+        media: false,
+        modals: false,
+        navs: false,
+        pagination: false,
+        popovers: false,
+        tables: false,
+        tabs: false,
+        tooltips: false
+      }
     }
   },
   methods: {
@@ -117,6 +138,14 @@ export default {
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => { this.show = true });
+    },
+    toggleAll(open) {
+      for(let sectionKey of Object.keys(this.showSection)) {
+        this.showSection[sectionKey] = open;
+      }
+    },
+    toggleSection(sectionKey) {
+      this.showSection[sectionKey] = !this.showSection[sectionKey];
     }
   }
 }
